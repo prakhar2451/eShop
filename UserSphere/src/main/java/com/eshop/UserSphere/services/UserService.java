@@ -1,6 +1,8 @@
 package com.eshop.UserSphere.services;
 
 import com.eshop.UserSphere.entities.User;
+import com.eshop.UserSphere.exceptionHandler.BadCredentialsException;
+import com.eshop.UserSphere.exceptionHandler.UnauthorizedAccessException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,7 +15,7 @@ public interface UserService {
      * @param user The user to be registered.
      * @return The registered user.
      */
-    User registerUser(User user);
+    User registerUser(User user) throws BadCredentialsException;
 
     /**
      * Logs in a user using credentials.
@@ -22,7 +24,7 @@ public interface UserService {
      * @param password The password of the user.
      * @return The logged-in user.
      */
-    User loginUser(String userName,String password);
+    User loginUser(String userName,String password) throws BadCredentialsException;
 
     /**
      * Retrieves a user by their user ID.
@@ -38,7 +40,7 @@ public interface UserService {
      * @param user The user with updated information.
      * @return The updated user.
      */
-    User updateUser(User user);
+    User updateUser(User user) throws UnauthorizedAccessException;
 
     /**
      * Deletes a user by their user ID.
